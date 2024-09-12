@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd0s3knxigq5w"]
+[gd_scene load_steps=10 format=3 uid="uid://dd0s3knxigq5w"]
 
+[ext_resource type="Script" path="res://Scenes/mob.gd" id="1_tm1wh"]
 [ext_resource type="Texture2D" uid="uid://boha0bfgtj7jd" path="res://Assets/art/enemyFlyingAlt_1.png" id="1_xp3yn"]
 [ext_resource type="Texture2D" uid="uid://c034ogaa83kum" path="res://Assets/art/enemyFlyingAlt_2.png" id="2_r7clp"]
 [ext_resource type="Texture2D" uid="uid://d12qspfxrsg65" path="res://Assets/art/enemySwimming_1.png" id="3_gy8op"]
@@ -49,6 +50,7 @@ height = 94.0
 
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
+script = ExtResource("1_tm1wh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -61,3 +63,5 @@ shape = SubResource("CapsuleShape2D_5fq8m")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 1)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
